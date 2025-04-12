@@ -35,7 +35,6 @@ script_id_tag_e1f0="POLYCRON_PAYLOAD_ID_$(echo "$payload_cmd_4a9b" | md5sum | cu
 
 # --- Polymorphism Engine ---
 
-# [[POLY_FUNC_MARKER_START_gen_rand_str_b5a2]]
 
 gen_rand_str_b5a2() {
   local len_f6g7=${1:-8}
