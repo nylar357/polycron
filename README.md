@@ -16,12 +16,12 @@ Polycron is a script designed to run jobs (commands or scripts) at intervals, si
                                                                                                                                                                                                                                      
 ## Why Use Polycron?                                                                                                                                                                                                                 
                                                                                                                                                                                                                                      
-*   **Less Predictable Schedules:** Useful in security scenarios where predictable cron timings might be exploited or detected (e.g., penetration testing, honeypots).                                                               
-*   **Load Spreading:** Introduce jitter or randomization to avoid multiple heavy tasks starting at the exact same second across many systems.                                                                                       
-*   **Dynamic Execution:** Potentially adapt job execution based on simple system state checks (though complex logic should be handled within the job script itself).                                                                
-*   **Centralized Config:** Manage dynamically scheduled tasks through a configuration file.                                                                                                                                         
+*   **Less Predictable Schedules:** Useful in security scenarios when infrastructure needs to be adapted to less predictable cron timings so this behavior can be detected (e.g., penetration testing, honeypots).                                                               
+*   **Modular:** The polymorphism engine and evasion techniques can be maintained while other behaviors can easily be added.                                                                                      
+*   **Dynamic Execution:** Adjust job execution based on simple system state checks or allow the script to behave in less predictable ways.                                                                                                                                                                                                   
                                                                                                                                                                                                                                      
 ## How it Works: The Polymorphic Engine                                                                                                                       
+
 **Polymorphism (`mutate_self_...`):**                                                                         
     *   It reads its own code (`$0`).                                                                             
     *   It generates new random names for its variables and functions (those marked with `_xxxx` random suffixes).                                                                                                                   
