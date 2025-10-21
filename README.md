@@ -71,7 +71,25 @@ Polycron is a script designed to run jobs (commands or scripts) at intervals, si
     ```
     ## 🚨 Safety Considerations                              
 
-Running automated tasks requires careful attention to security and stability. Polycron adds complexity, so be extra vigilant.                                                                                                        
+Running automated tasks requires careful attention to security and stability. Polycron adds complexity, so be extra vigilant.          
+
+## In Memory Polymorphism ##
+
+              Section 2: Obfuscation Technique 1 - Base64 Encoding
+
+Base64 is a common encoding scheme that represents binary data as an ASCII string. While not a form of encryption, it is highly effective at transforming readable code into a block of text that evades simple keyword-based detection rules. For example, a security tool looking for the string "netcat" or "nc -l" will not find it in a Base64-encoded script.  
+
+The base64 Obfuscation Workflow
+
+    Encode the Payload: The entire payload script is read and piped into the base64 command, converting it into a single, long string of ASCII characters.
+
+    Create the Wrapper: A new Bash script is generated. This wrapper contains the Base64 string stored in a variable.
+
+    Execute at Runtime: The wrapper script uses a command pipeline to decode the Base64 string and pipe the resulting plaintext directly into eval or a new bash process for execution.
+
+Implementation in the Obfuscation Engine
+
+                                                                                
 
 1.  **Principle of Least Privilege:**                                                                             
     *   **Run Polycron as a non-root user:** Create a dedicated user with minimal permissions specifically for running Polycron.                                                                                                     
