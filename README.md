@@ -73,11 +73,12 @@ Polycron is a script designed to run jobs (commands or scripts) at intervals, si
 
 Running automated tasks requires careful attention to security and stability. Polycron adds complexity, so be extra vigilant.          
 
-## In Memory Polymorphism ##
+## In Memory Polymorphism 
 
-              Section 2: Obfuscation Technique 1 - Base64 Encoding
+# Technique 1 - Base64 Encoding
 
-Base64 is a common encoding scheme that represents binary data as an ASCII string. While not a form of encryption, it is highly effective at transforming readable code into a block of text that evades simple keyword-based detection rules. For example, a security tool looking for the string "netcat" or "nc -l" will not find it in a Base64-encoded script.  
+Base64 is a common encoding scheme that represents binary data as an ASCII string. While not a form of encryption, it is highly effective at transforming readable code into a block of text that evades simple keyword-based detection rules. For example, a security tool looking for the string "netcat" or "nc -l" will not find it in a 
+Base64-encoded script.  
 
 The base64 Obfuscation Workflow
 
