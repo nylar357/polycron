@@ -77,24 +77,28 @@ Running automated tasks requires careful attention to security and stability. Po
 
 # Technique 1 - Base64 Encoding
 
-Base64 is a common encoding scheme that represents binary data as an ASCII string. While not a form of encryption, it is highly effective at transforming readable code into a block of text that evades simple keyword-based detection rules. For example, a security tool looking for the string "netcat" or "nc -l" will not find it in a 
+### Base64 is a common encoding scheme that represents binary data as an ASCII string. 
+
+### While not a form of encryption, it is highly effective at transforming readable code into a block of text that evades simple keyword-based detection rules. 
+
+### For example, a security tool looking for the string "netcat" or "nc -l" will not find it in a 
 Base64-encoded script.  
 
 The base64 Obfuscation Workflow
 
-    Encode the Payload: The entire payload script is read and piped into the base64 command, converting it into a single, long string of ASCII characters.
+### Encode the Payload: The entire payload script is read and piped into the base64 command, converting it into a single, long string of ASCII characters.
 
-    Create the Wrapper: A new Bash script is generated. This wrapper contains the Base64 string stored in a variable.
+### Create the Wrapper: A new Bash script is generated. This wrapper contains the Base64 string stored in a variable.
 
-    Execute at Runtime: The wrapper script uses a command pipeline to decode the Base64 string and pipe the resulting plaintext directly into eval or a new bash process for execution.
+### Execute at Runtime: The wrapper script uses a command pipeline to decode the Base64 string and pipe the resulting plaintext directly into eval or a new bash process for execution.
 
 Implementation in the Obfuscation Engine
 
                                                                                 
 
 1.  **Principle of Least Privilege:**                                                                             
-    *   **Run Polycron as a non-root user:** Create a dedicated user with minimal permissions specifically for running Polycron.                                                                                                     
-    *   **Run Jobs with Minimal Permissions:** Ensure the commands/scripts defined in the config file only have the permissions they strictly need. Avoid running jobs as root unless absolutely necessary and fully understood.
+    Run Polycron as a non-root user:** Create a dedicated user with minimal permissions specifically for running Polycron.                                                                                                     
+    Run Jobs with Minimal Permissions:** Ensure the commands/scripts defined in the config file only have the permissions they strictly need. Avoid running jobs as root unless absolutely necessary and fully understood.
     *   **`user` Directive:** Using the `user` field in the config requires careful setup (Polycron might need root initially or `sudo` rules). Prefer running Polycron itself as the target user if possible.
 
 2.  **Command Injection:**                               
